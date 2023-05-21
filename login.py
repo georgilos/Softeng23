@@ -39,17 +39,15 @@ class Ui_MainWindow(object):
         self.Register_Button.setGeometry(QtCore.QRect(290, 360, 71, 21))
         self.Register_Button.setObjectName("Register_Button")
         self.no_account_label = QtWidgets.QLabel(self.centralwidget)
-        self.no_account_label.setGeometry(QtCore.QRect(290, 350, 91, 16))
+        self.no_account_label.setGeometry(QtCore.QRect(290, 330, 151, 16))
         font = QtGui.QFont()
-        font.setPointSize(5)
+        font.setPointSize(7)
         self.no_account_label.setFont(font)
         self.no_account_label.setObjectName("no_account_label")
-        self.helpbutton = QtWidgets.QPushButton(self.centralwidget)
-        self.helpbutton.setGeometry(QtCore.QRect(530, 30, 21, 41))
+        
         font = QtGui.QFont()
         font.setPointSize(23)
-        self.helpbutton.setFont(font)
-        self.helpbutton.setObjectName("helpbutton")
+       
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -66,42 +64,14 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "Parkare To"))
         self.Login_Button.setText(_translate("MainWindow", "Login"))
         self.Register_Button.setText(_translate("MainWindow", "Register"))
-        self.no_account_label.setText(_translate("MainWindow", "Don't have register yet"))
-
+        self.no_account_label.setText(_translate("MainWindow", "Don't have register yet?"))
         self.Login_Button.clicked.connect(self.login)
 
     def login(self):
         username = self.line_for_username.text()
         password = self.line_for_pass.text()
 
-        # Establish database connection
-        try:
-            db = mysql.connector.connect(
-                host="localhost",
-                user="your_username",
-                password="your_password",
-                database="your_database"
-            )
-            cursor = db.cursor()
-
-            # Execute a sample SQL query
-            query = "SELECT * FROM users WHERE username = %s AND password = %s"
-            cursor.execute(query, (username, password))
-            result = cursor.fetchone()
-
-            if result:
-                # Successful login
-                print("Login successful!")
-            else:
-                # Invalid credentials
-                print("Invalid username or password!")
-
-            # Close database connection
-            cursor.close()
-            db.close()
-
-        except mysql.connector.Error as error:
-            print("Error connecting to MySQL database:", error)
+       
                                                  
 # to run as python script
 if __name__ == "__main__":
