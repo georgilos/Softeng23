@@ -98,12 +98,24 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addWidget(self.register_button, 4, 1, 1, 1)
         self.register_button.setObjectName("register_button")
         self.register_button.clicked.connect(self.insert_data)
-        self.labelResult = QtWidgets.QLabel(self.layoutWidget)
         spacerItem17 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout_2.addItem(spacerItem17, 4, 2, 1, 1)
+        
+
+        spacerItem18 = QtWidgets.QSpacerItem(60, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout.addItem(spacerItem18, 3, 2, 1, 1)
+        self.labelResult = QtWidgets.QLabel(self.layoutWidget)
+        self.labelResult.setObjectName("labelResult")
+        self.gridLayout.addWidget(self.labelResult, 4, 0, 1, 1)
+        self.labelResult_line = QtWidgets.QLineEdit(self.layoutWidget)
+        self.labelResult_line.setObjectName("labelResult_line")
+        self.gridLayout.addWidget(self.labelResult_line, 4, 2, 1, 1)
+
+
         font = QtGui.QFont()
         font.setPointSize(23)
-        
+        self.labelResult.setFont(font)
+      
         
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -114,32 +126,43 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
     
 
+    
     def insert_data(self):
         try:
+            
             mydb= mc.connect(
             host="localhost",
             user="root",
             password="",
             database = "softeng"
          )
-        except mc.Error as e:
-            self.labelResult.setText("Error Inserting Data")
-
             mycursor = mydb.cursor()
-            name = self.lineEditName.text()
-            lastname = self.lineEditLastname.text()
-            usernmae = self.lineEditLastname.text()
-            password = self.lineEditPasswrod.text()
-            email = self.lineEditEmail.text()
-            phone_num = self.lineEditPhonenum.text()
-            
-            query = "INSERT INTO registration(name , lastname , username , password , email , phone_num) VALUES (%s,%s,%s,%s,%s,%s)"
-            value = (name,lastname,usernmae,password,email,phone_num)
+
+            name = self.firstname_line.text()
+            lastname = self.lastname_line.text()
+            usernmae = self.username_line.text()
+            password = self.pass_line.text()
+            email = self.email_line.text()
+            phone_num = self.phone_line.text()
 
             mycursor.execute(query,value)
 
+
+            query = "INSERT INTO registration(name , lastname , username , password , email , phone_num) VALUES (%s,%s,%s,%s,%s,%s)"
+            value = (name,lastname,usernmae,password,email,phone_num)
             mydb.commit()
             self.labelResult.setText("Data Inserted")
+
+        except mc.Error as e:
+            self.labelResult.setText("Error Inserting Data")
+
+            
+            
+            
+
+
+
+           
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -152,50 +175,12 @@ class Ui_MainWindow(object):
         self.email_label.setText(_translate("MainWindow", "Email "))
         self.phone_num_label.setText(_translate("MainWindow", "Phone number"))
         self.register_button.setText(_translate("MainWindow", "Register"))
+
+        
         
 
 
-    #  self.register_button.clicked.connect(self.register_user)
-
-    # def register_user(self):
-    #     # Get user input from the UI elements
-    #     name = self.firstname_line.text()
-    #     lastname = self.lastname_line.text()
-    #     username = self.username_line.text()
-    #     password = self.pass_line.text()
-    #     email = self.email_line.text()
-    #     phone_number = self.phone_line.text()
-
-    #     # Create a database connection
-    #     db = pymysql.connect(
-    #         host="localhost",
-    #         user="root",
-    #         password="Test@123",
-    #         database="softeng"
-    #     )
-
-    #     # Perform the database operation
-    #     cursor = db.cursor()
-    #     query = "INSERT INTO users (name, lastname, username, password, email, phone_number) VALUES (%s, %s, %s, %s, %s, %s)"
-    #     values = (name, lastname, username, password, email, phone_number)
-    #     cursor.execute(query, values)
-
-    #     # Commit the changes and close the database connection
-    #     db.commit()
-    #     db.close()
-
-    #     # Display a success message or perform any other actions
-    #     QtWidgets.QMessageBox.information(MainWindow, "Registration Successful", "User registered successfully!")
-
-    #     # Clear the input fields
-    #     self.firstname_line.clear()
-    #     self.lastname_line.clear()
-    #     self.username_line.clear()
-    #     self.pass_line.clear()
-    #     self.email_line.clear()
-    #     self.phone_line.clear()
-
-    #     # Optionally, you can close the window or perform any other actions after registration
+   
 
         # to run as python script
 if __name__ == "__main__":
