@@ -38,6 +38,9 @@ class Ui_MainWindow(object):
         self.Register_Button = QtWidgets.QPushButton(self.centralwidget)
         self.Register_Button.setGeometry(QtCore.QRect(290, 360, 71, 21))
         self.Register_Button.setObjectName("Register_Button")
+        self.Register_Button.clicked.connect(self.open_signup)
+
+    
         self.no_account_label = QtWidgets.QLabel(self.centralwidget)
         self.no_account_label.setGeometry(QtCore.QRect(290, 330, 151, 16))
         font = QtGui.QFont()
@@ -64,6 +67,7 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "Parkare To"))
         self.Login_Button.setText(_translate("MainWindow", "Login"))
         self.Register_Button.setText(_translate("MainWindow", "Register"))
+        
         self.no_account_label.setText(_translate("MainWindow", "Don't have register yet?"))
         self.Login_Button.clicked.connect(self.login)
 
@@ -71,7 +75,9 @@ class Ui_MainWindow(object):
         username = self.line_for_username.text()
         password = self.line_for_pass.text()
 
-       
+    def open_signup(self):
+        self.signup = Ui_MainWindow()
+        self.signup.show()
                                                  
 # to run as python script
 if __name__ == "__main__":
@@ -82,3 +88,6 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
+
+
+  
