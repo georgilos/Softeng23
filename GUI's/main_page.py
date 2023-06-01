@@ -108,6 +108,12 @@ class Ui_MainWindow(object):
 
 if __name__ == "__main__":
     import sys
+    import os
+
+    # Prevent bytecode generation
+    sys.dont_write_bytecode = True
+    os.environ["PYTHONDONTWRITEBYTECODE"] = "1"
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
