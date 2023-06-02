@@ -1,5 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-import mysql.connector as mc
+import pymysql as mc
+
 
 
 class Ui_MainWindow(object):
@@ -109,7 +110,7 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.labelResult, 4, 0, 1, 1)
         self.labelResult_line = QtWidgets.QLineEdit(self.layoutWidget)
         self.labelResult_line.setObjectName("labelResult_line")
-        self.gridLayout.addWidget(self.labelResult_line, 4, 2, 1, 1)
+        self.gridLayout.addWidget(self.labelResult_line, 10, 2, 1, 1)
 
 
         font = QtGui.QFont()
@@ -124,45 +125,36 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
     
 
     
     def insert_data(self):
         try:
-            
-            mydb= mc.connect(
-            host="localhost",
-            user="root",
-            password="",
-            database = "softeng"
-         )
+            mydb = mc.connect(
+                host="localhost",
+                user="root",
+                password="",
+                database="softeng"
+            )
             mycursor = mydb.cursor()
 
             name = self.firstname_line.text()
             lastname = self.lastname_line.text()
-            usernmae = self.username_line.text()
+            username = self.username_line.text()
             password = self.pass_line.text()
             email = self.email_line.text()
             phone_num = self.phone_line.text()
 
-            mycursor.execute(query,value)
+            query = "INSERT INTO registration(name, lastname, username, password, email, phone_num) VALUES (%s, %s, %s, %s, %s, %s)"
+            value = (name, lastname, username, password, email, phone_num)
+            mycursor.execute(query, value)
 
-
-            query = "INSERT INTO registration(name , lastname , username , password , email , phone_num) VALUES (%s,%s,%s,%s,%s,%s)"
-            value = (name,lastname,usernmae,password,email,phone_num)
             mydb.commit()
             self.labelResult.setText("Data Inserted")
 
         except mc.Error as e:
             self.labelResult.setText("Error Inserting Data")
-
-            
-            
-            
-
-
-
-           
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -176,13 +168,7 @@ class Ui_MainWindow(object):
         self.phone_num_label.setText(_translate("MainWindow", "Phone number"))
         self.register_button.setText(_translate("MainWindow", "Register"))
 
-        
-        
 
-
-   
-
-        # to run as python script
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
@@ -191,4 +177,3 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-

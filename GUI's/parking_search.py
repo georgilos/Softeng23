@@ -10,3 +10,9 @@ class ParkingWindow(QtWidgets.QWidget):
         label = QtWidgets.QLabel("Select Parking")
         layout.addWidget(label)
         self.setLayout(layout)
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    parking_window = ParkingWindow()
+    parking_window.show()
+    sys.exit(app.exec_())
