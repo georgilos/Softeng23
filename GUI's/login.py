@@ -1,5 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+# from signup import Ui_MainWindow
 import mysql.connector
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -75,8 +77,9 @@ class Ui_MainWindow(object):
         username = self.line_for_username.text()
         password = self.line_for_pass.text()
 
+
     def open_signup(self):
-        self.signup = Ui_MainWindow()
+        self.signup =  Ui_MainWindow()
         self.signup.show()
                                                  
 # to run as python script
@@ -90,4 +93,7 @@ if __name__ == "__main__":
     sys.exit(app.exec_())
 
 
-  
+   
+
+
+
