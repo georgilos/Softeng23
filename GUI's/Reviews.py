@@ -1,6 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-
 class Ui_Review(object):
     def setupUi(self, Review):
         Review.setObjectName("Review")
@@ -9,13 +8,13 @@ class Ui_Review(object):
         self.centralwidget = QtWidgets.QWidget(Review)
         self.centralwidget.setObjectName("centralwidget")
         self.review_label = QtWidgets.QLabel(self.centralwidget)
-        self.review_label.setGeometry(QtCore.QRect(190, 40, 191, 71))
+        self.review_label.setGeometry(QtCore.QRect(220, 40, 191, 71))
         font = QtGui.QFont()
         font.setPointSize(24)
         self.review_label.setFont(font)
         self.review_label.setObjectName("review_label")
         self.helpButton = QtWidgets.QPushButton(self.centralwidget)
-        self.helpButton.setGeometry(QtCore.QRect(480, 50, 21, 51))
+        self.helpButton.setGeometry(QtCore.QRect(450, 50, 90, 65))  # Adjust the width and height values
         font = QtGui.QFont()
         font.setPointSize(26)
         self.helpButton.setFont(font)
@@ -56,7 +55,7 @@ class Ui_Review(object):
         _translate = QtCore.QCoreApplication.translate
         Review.setWindowTitle(_translate("Review", "MainWindow"))
         self.review_label.setText(_translate("Review", "Review"))
-        self.helpButton.setText(_translate("Review", "!"))
+        self.helpButton.setText(_translate("Review", "Help"))
         self.submitButton.setText(_translate("Review", "Submit"))
         self.cancelButton.setText(_translate("Review", "Cancel"))
 
@@ -83,9 +82,6 @@ class ParkingWindow(QtWidgets.QMainWindow):
         layout.addWidget(label)
         self.setLayout(layout)
         
-        
-
-    
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
