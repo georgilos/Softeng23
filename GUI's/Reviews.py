@@ -71,6 +71,19 @@ class Review:
 class ParkingApp:
     def __init__(self, name):
         self.name = name
+        
+class ParkingWindow(QtWidgets.QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Review")
+        self.setGeometry(100, 100, 400, 300)
+
+        layout = QtWidgets.QVBoxLayout()
+        label = QtWidgets.QLabel("Review")
+        layout.addWidget(label)
+        self.setLayout(layout)
+        
+        
 
     
 if __name__ == "__main__":
@@ -78,6 +91,7 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_Review()
+    parking_window = ParkingWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
