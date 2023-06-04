@@ -70,24 +70,52 @@ class Review:
 class ParkingApp:
     def __init__(self, name):
         self.name = name
-        
-class ParkingWindow(QtWidgets.QMainWindow):
+
+
+class ReviewWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
+
         self.setWindowTitle("Review")
         self.setGeometry(100, 100, 400, 300)
 
-        layout = QtWidgets.QVBoxLayout()
-        label = QtWidgets.QLabel("Review")
-        layout.addWidget(label)
-        self.setLayout(layout)
-        
+        self.ui = Ui_Review()
+        self.ui.setupUi(self)
+
+        self.reviews = []  # List to store the reviews
+
+        # Connect button signals to functions
+        self.ui.helpButton.clicked.connect(self.showHelp)
+        self.ui.submitButton.clicked.connect(self.submitReview)
+        self.ui.cancelButton.clicked.connect(self.close)
+
+    def showHelp(self):
+        # Function to show help information
+        QtWidgets.QMessageBox.information(self, "Help", "Help information goes here.")
+
+    def submitReview(self):
+        # Function to handle review submission
+        username = "John Doe"  # Replace with the actual username
+        rating = 5  # Replace with the actual rating value
+        comment = "This is a great app!"  # Replace with the actual comment
+
+        review = Review(username, rating, comment)
+        self.reviews.append(review)
+
+        # Do something with the submitted review data (e.g., store in a database)
+
+        # Show a message box to indicate successful submission
+        QtWidgets.QMessageBox.information(self, "Success", "Review submitted successfully.")
+
+        # Clear the input fields
+        # self.ui.usernameLineEdit.clear()
+        # self.ui.ratingSpinBox.setValue(0)
+        # self.ui.commentTextEdit.clear()
+
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_Review()
-    parking_window = ParkingWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    reviewWindow = ReviewWindow()
+    reviewWindow.show()
     sys.exit(app.exec_())

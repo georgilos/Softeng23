@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from parking_search import ParkingWindow
-
+from Reviews import ReviewWindow
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -106,6 +106,15 @@ class Ui_MainWindow(object):
     def open_parking_search(self):
         self.parking_search = ParkingWindow()
         self.parking_search.show()
+
+        self.Reviews_button.clicked.connect(self.open_Reviews)
+
+    def open_Reviews(self):
+        self.Reviews= ReviewWindow()
+        self.Reviews.show()
+
+
+
 
 
 if __name__ == "__main__":
