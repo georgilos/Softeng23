@@ -3,12 +3,12 @@ import pymysql as mc
 
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(564, 637)
-        MainWindow.setStyleSheet("background-image: url(:/newPrefix/back1.jpg);")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+class SignUp_Window(object):
+    def setupUi(self, SignUpWindow):
+        SignUpWindow.setObjectName("SignUpWindow")
+        SignUpWindow.resize(564, 637)
+        SignUpWindow.setStyleSheet("background-image: url(:/newPrefix/back1.jpg);")
+        self.centralwidget = QtWidgets.QWidget(SignUpWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.layoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.layoutWidget.setGeometry(QtCore.QRect(160, 50, 271, 528))
@@ -118,13 +118,13 @@ class Ui_MainWindow(object):
         self.labelResult.setFont(font)
       
         
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        SignUpWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(SignUpWindow)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        SignUpWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(SignUpWindow)
+        QtCore.QMetaObject.connectSlotsByName(SignUpWindow)
 
     
 
@@ -156,24 +156,24 @@ class Ui_MainWindow(object):
         except mc.Error as e:
             self.labelResult.setText("Error Inserting Data")
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, SignUpWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "Registration "))
-        self.name_label.setText(_translate("MainWindow", "First name "))
-        self.lastname_label.setText(_translate("MainWindow", "Lastname"))
-        self.username_label.setText(_translate("MainWindow", "Username"))
-        self.password_label.setText(_translate("MainWindow", "Password"))
-        self.email_label.setText(_translate("MainWindow", "Email "))
-        self.phone_num_label.setText(_translate("MainWindow", "Phone number"))
-        self.register_button.setText(_translate("MainWindow", "Register"))
+        SignUpWindow.setWindowTitle(_translate("SignUpWindow", "SignUpWindow"))
+        self.label.setText(_translate("SignUpWindow", "Registration "))
+        self.name_label.setText(_translate("SignUpWindow", "First name "))
+        self.lastname_label.setText(_translate("SignUpWindow", "Lastname"))
+        self.username_label.setText(_translate("SignUpWindow", "Username"))
+        self.password_label.setText(_translate("SignUpWindow", "Password"))
+        self.email_label.setText(_translate("SignUpWindow", "Email "))
+        self.phone_num_label.setText(_translate("SignUpWindow", "Phone number"))
+        self.register_button.setText(_translate("SignUpWindow", "Register"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    SignUpWindow = QtWidgets.QMainWindow()
+    ui = SignUp_Window()
+    ui.setupUi(SignUpWindow)
+    SignUpWindow.show()
     sys.exit(app.exec_())
