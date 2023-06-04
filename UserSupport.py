@@ -8,7 +8,7 @@ def show_message():
 def submit_answer():
     answer1 = entry1.get()
     answer2 = entry2.get()
-    messagebox.showinfo("Answers", f"Hi {answer1} \n Someone of our Membership try to fix the problem which is : {answer2}")
+    messagebox.showinfo("AI Support", f"Hi {answer1} \n Someone of our Membership try to fix the problem which is : {answer2}")
 
 # Create a new tkinter window
 window = tk.Tk()
