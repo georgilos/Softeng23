@@ -1,14 +1,14 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-# from signup import Ui_MainWindow
-import mysql.connector
+from signup import SignUp_Window
+import pymysql as mc
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(611, 418)
-        MainWindow.setStyleSheet("background-image: url(:/newPrefix/back1.jpg);")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
+class Login_Window(object):
+    def setupUi(self, LoginWindow):
+        LoginWindow.setObjectName("LoginWindow")
+        LoginWindow.resize(611, 418)
+        LoginWindow.setStyleSheet("background-image: url(:/newPrefix/back1.jpg);")
+        self.centralwidget = QtWidgets.QWidget(LoginWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.username_label = QtWidgets.QLabel(self.centralwidget)
         self.username_label.setGeometry(QtCore.QRect(30, 140, 171, 31))
@@ -40,9 +40,7 @@ class Ui_MainWindow(object):
         self.Register_Button = QtWidgets.QPushButton(self.centralwidget)
         self.Register_Button.setGeometry(QtCore.QRect(290, 360, 71, 21))
         self.Register_Button.setObjectName("Register_Button")
-        self.Register_Button.clicked.connect(self.open_signup)
-
-    
+        # self.Register_Button.clicked.connect(self.open_signup)
         self.no_account_label = QtWidgets.QLabel(self.centralwidget)
         self.no_account_label.setGeometry(QtCore.QRect(290, 330, 151, 16))
         font = QtGui.QFont()
@@ -53,43 +51,77 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(23)
        
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        LoginWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(LoginWindow)
         self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        LoginWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(LoginWindow)
+        QtCore.QMetaObject.connectSlotsByName(LoginWindow)
 
-    def retranslateUi(self, MainWindow):
+  
+
+
+    def retranslateUi(self, LoginWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.username_label.setText(_translate("MainWindow", "Username"))
-        self.password_label.setText(_translate("MainWindow", "Password"))
-        self.label.setText(_translate("MainWindow", "Parkare To"))
-        self.Login_Button.setText(_translate("MainWindow", "Login"))
-        self.Register_Button.setText(_translate("MainWindow", "Register"))
-        
-        self.no_account_label.setText(_translate("MainWindow", "Don't have register yet?"))
+        LoginWindow.setWindowTitle(_translate("LoginWindow", "LoginWindow"))
+        self.username_label.setText(_translate("LoginWindow", "Username"))
+        self.password_label.setText(_translate("LoginWindow", "Password"))
+        self.label.setText(_translate("LoginWindow", "Parkare To"))
+        self.Login_Button.setText(_translate("LoginWindow", "Login"))
+        self.Register_Button.setText(_translate("LoginWindow", "Register"))
+        self.no_account_label.setText(_translate("LoginWindow", "Don't have register yet?"))
         self.Login_Button.clicked.connect(self.login)
-
-    def login(self):
-        username = self.line_for_username.text()
-        password = self.line_for_pass.text()
-
-
+        
+        self.Register_Button.clicked.connect(self.open_signup)
+ 
+    
     def open_signup(self):
-        self.signup =  Ui_MainWindow()
+        self.signup = SignUp_Window()
         self.signup.show()
+    
+    
+    
+    def login(self):
+     try:
+        mydb = mc.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="softeng"
+        )
+        mycursor = mydb.cursor()
+
+        username = self.username_line.text()
+        password = self.password_line.text()
+
+        query = "SELECT * FROM registration WHERE username = %s AND password = %s"
+        value = (username, password)
+
+        mycursor.execute(query, value)
+        result = mycursor.fetchone()
+
+        if result is not None:
+            self.labelResult.setText("Login Successful")
+            # Redirect to the main page or perform any other actions
+        else:
+            self.labelResult.setText("Invalid Credentials")
+
+     except mc.Error as e:
+        self.labelResult.setText("Error Logging In")
+    
+
+
+   
                                                  
 # to run as python script
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    LoginWindow = QtWidgets.QMainWindow()
+    ui = Login_Window()
+    ui.setupUi(LoginWindow)
+    LoginWindow.show()
     sys.exit(app.exec_())
 
 
