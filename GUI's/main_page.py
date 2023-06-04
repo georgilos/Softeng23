@@ -60,6 +60,7 @@ class Ui_MainWindow(object):
 
         self.Reviews_button = QtWidgets.QPushButton(self.layoutWidget)
         font = QtGui.QFont()
+        self.Reviews_button.setStyleSheet("background-color: lightcyan;")
         font.setPointSize(11)
         self.Reviews_button.setFont(font)
         self.Reviews_button.setObjectName("Reviews_button")
