@@ -1,52 +1,55 @@
-import tkinter as tk
-from tkinter import messagebox
+from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Gift:
+
+
+class Gifts:
     def __init__(self, name, description, price):
         self.name = name
         self.description = description
         self.price = price
 
-class ParkareTo:
+
+class GiftsWindow(QtWidgets.QWidget):
     def __init__(self):
+        super().__init__()
         self.gifts = []
-        self.root = tk.Tk()
-        self.root.title("ParkareTo")
 
-        self.name_label = tk.Label(self.root, text="Name:")
-        self.name_label.pack()
-        self.name_entry = tk.Entry(self.root)
-        self.name_entry.pack()
+        self.setWindowTitle("ParkareTo")
+        self.name_label = QtWidgets.QLabel("Name:")
+        self.name_entry = QtWidgets.QLineEdit()
+        self.description_label = QtWidgets.QLabel("Description:")
+        self.description_entry = QtWidgets.QLineEdit()
+        self.price_label = QtWidgets.QLabel("Price:")
+        self.price_entry = QtWidgets.QLineEdit()
+        self.submit_button = QtWidgets.QPushButton("Submit")
+        self.submit_button.clicked.connect(self.add_gift)
 
-        self.description_label = tk.Label(self.root, text="Description:")
-        self.description_label.pack()
-        self.description_entry = tk.Entry(self.root)
-        self.description_entry.pack()
-
-        self.price_label = tk.Label(self.root, text="Price:")
-        self.price_label.pack()
-        self.price_entry = tk.Entry(self.root)
-        self.price_entry.pack()
-
-        self.submit_button = tk.Button(self.root, text="Submit", command=self.add_gift)
-        self.submit_button.pack()
+        layout = QtWidgets.QVBoxLayout()
+        layout.addWidget(self.name_label)
+        layout.addWidget(self.name_entry)
+        layout.addWidget(self.description_label)
+        layout.addWidget(self.description_entry)
+        layout.addWidget(self.price_label)
+        layout.addWidget(self.price_entry)
+        layout.addWidget(self.submit_button)
+        self.setLayout(layout)
 
     def add_gift(self):
-        name = self.name_entry.get()
-        description = self.description_entry.get()
-        price = float(self.price_entry.get())
+        name = self.name_entry.text()
+        description = self.description_entry.text()
+        price = float(self.price_entry.text())
 
-        gift = Gift(name, description, price)
+        gift = Gifts(name, description, price)
         self.gifts.append(gift)
-        messagebox.showinfo("Gift Added", "Gift added successfully!")
+        QtWidgets.QMessageBox.information(self, "Gift Added", "Gift added successfully!")
 
-        self.name_entry.delete(0, tk.END)
-        self.description_entry.delete(0, tk.END)
-        self.price_entry.delete(0, tk.END)
+        self.name_entry.clear()
+        self.description_entry.clear()
+        self.price_entry.clear()
 
     def get_gifts(self):
         if len(self.gifts) == 0:
-            messagebox.showinfo("No Gifts", "No gifts found.")
+            QtWidgets.QMessageBox.information(self, "No Gifts", "No gifts found.")
         else:
             gift_info = "Gifts:\n"
             for gift in self.gifts:
@@ -55,13 +58,13 @@ class ParkareTo:
                 gift_info += f"Price: {gift.price}\n"
                 gift_info += "\n"
 
-            messagebox.showinfo("Gifts", gift_info)
+            QtWidgets.QMessageBox.information(self, "Gifts", gift_info)
 
-    def run(self):
-        self.root.mainloop()
 
-# Creating an instance of the ParkingApp
-parkare_to = ParkareTo()
+if __name__ == "__main__":
+    import sys
 
-# Running the app
-parkare_to.run()
+    app = QtWidgets.QApplication(sys.argv)
+    parkare_to = GiftsWindow()
+    parkare_to.show()
+    sys.exit(app.exec_())

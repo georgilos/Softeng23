@@ -95,7 +95,7 @@ class ReviewWindow(QtWidgets.QMainWindow):
 
     def submitReview(self):
         # Function to handle review submission
-        username = "John Doe"  # Replace with the actual username
+        username = "Alexis tsampas  "  # Replace with the actual username
         rating = 5  # Replace with the actual rating value
         comment = "This is a great app!"  # Replace with the actual comment
 

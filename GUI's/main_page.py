@@ -1,6 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from parking_search import ParkingWindow
 from Reviews import ReviewWindow
+from Gifts import GiftsWindow
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -52,6 +54,7 @@ class Ui_MainWindow(object):
 
         self.gifts_button = QtWidgets.QPushButton(self.layoutWidget)
         font = QtGui.QFont()
+        self.gifts_button.setStyleSheet("background-color: lightcyan;")
         font.setPointSize(11)
         self.gifts_button.setFont(font)
         self.gifts_button.setObjectName("gifts_button")
@@ -102,17 +105,24 @@ class Ui_MainWindow(object):
         self.user_support_button.setText(_translate("MainWindow", "User Support"))
 
         self.parking_search_button.clicked.connect(self.open_parking_search)
+        self.Reviews_button.clicked.connect(self.open_Reviews)
+        self.gifts_button.clicked.connect(self.open_Gifts)
 
     def open_parking_search(self):
         self.parking_search = ParkingWindow()
         self.parking_search.show()
 
-        self.Reviews_button.clicked.connect(self.open_Reviews)
+        
 
     def open_Reviews(self):
         self.Reviews= ReviewWindow()
         self.Reviews.show()
+        
+       
 
+    def open_Gifts(self):
+        self.Gifts= GiftsWindow()
+        self.Gifts.show()
 
 
 
