@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtCore
 
 class ParkingWindow(QtWidgets.QWidget):
     def __init__(self):
@@ -7,10 +7,12 @@ class ParkingWindow(QtWidgets.QWidget):
         self.setGeometry(100, 100, 400, 300)
 
         layout = QtWidgets.QVBoxLayout()
+        layout.setAlignment(QtCore.Qt.AlignTop | QtCore.Qt.AlignHCenter)  # Align to top and horizontally centered
+
         label = QtWidgets.QLabel("Select Parking")
         layout.addWidget(label)
         self.setLayout(layout)
-        
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
