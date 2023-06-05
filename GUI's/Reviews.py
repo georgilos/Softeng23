@@ -16,11 +16,11 @@ class Ui_Review(object):
         self.helpButton = QtWidgets.QPushButton(self.centralwidget)
         self.helpButton.setGeometry(QtCore.QRect(450, 50, 90, 65))  # Adjust the width and height values
         font = QtGui.QFont()
-        font.setPointSize(26)
+        font.setPointSize(25)
         self.helpButton.setFont(font)
         self.helpButton.setObjectName("helpButton")
         self.widget = QtWidgets.QWidget(self.centralwidget)
-        self.widget.setGeometry(QtCore.QRect(210, 230, 139, 176))
+        self.widget.setGeometry(QtCore.QRect(211, 230, 139, 176))
         self.widget.setObjectName("widget")
         self.gridLayout = QtWidgets.QGridLayout(self.widget)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
