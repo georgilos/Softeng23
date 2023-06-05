@@ -56,7 +56,7 @@ class Ui_checkout(object):
 
     def retranslateUi(self, checkout):
         _translate = QtCore.QCoreApplication.translate
-        checkout.setWindowTitle(_translate("checkout", "MainWindow"))
+        checkout.setWindowTitle(_translate("checkout", "CheckOutWindow"))
         self.checkout_label.setText(_translate("checkout", "Check-out"))
         self.helpButton.setText(_translate("checkout", "!"))
         self.checkoutButton.setText(_translate("checkout", "Checkout"))
