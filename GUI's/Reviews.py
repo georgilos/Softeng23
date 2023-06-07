@@ -1,121 +1,92 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_Review(object):
-    def setupUi(self, Review):
-        Review.setObjectName("Review")
-        Review.resize(560, 600)
-        Review.setStyleSheet("background-image: url(:/newPrefix/back1.jpg);")
-        self.centralwidget = QtWidgets.QWidget(Review)
-        self.centralwidget.setObjectName("centralwidget")
-        self.review_label = QtWidgets.QLabel(self.centralwidget)
-        self.review_label.setGeometry(QtCore.QRect(220, 40, 191, 71))
-        font = QtGui.QFont()
-        font.setPointSize(24)
-        self.review_label.setFont(font)
-        self.review_label.setObjectName("review_label")
-        self.helpButton = QtWidgets.QPushButton(self.centralwidget)
-        self.helpButton.setGeometry(QtCore.QRect(450, 50, 90, 65))  # Adjust the width and height values
-        font = QtGui.QFont()
-        font.setPointSize(25)
-        self.helpButton.setFont(font)
-        self.helpButton.setObjectName("helpButton")
-        self.widget = QtWidgets.QWidget(self.centralwidget)
-        self.widget.setGeometry(QtCore.QRect(211, 230, 139, 176))
-        self.widget.setObjectName("widget")
-        self.gridLayout = QtWidgets.QGridLayout(self.widget)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout.setObjectName("gridLayout")
-        self.submitButton = QtWidgets.QPushButton(self.widget)
-        font = QtGui.QFont()
-        font.setPointSize(16)
-        self.submitButton.setFont(font)
-        self.submitButton.setObjectName("submitButton")
-        self.gridLayout.addWidget(self.submitButton, 0, 0, 1, 3)
-        spacerItem = QtWidgets.QSpacerItem(20, 88, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout.addItem(spacerItem, 1, 1, 1, 1)
-        spacerItem1 = QtWidgets.QSpacerItem(17, 17, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem1, 2, 0, 1, 1)
-        self.cancelButton = QtWidgets.QPushButton(self.widget)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.cancelButton.setFont(font)
-        self.cancelButton.setObjectName("cancelButton")
-        self.gridLayout.addWidget(self.cancelButton, 2, 1, 1, 1)
-        spacerItem2 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem2, 2, 2, 1, 1)
-        Review.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(Review)
-        self.statusbar.setObjectName("statusbar")
-        Review.setStatusBar(self.statusbar)
-
-        self.retranslateUi(Review)
-        QtCore.QMetaObject.connectSlotsByName(Review)
-
-    def retranslateUi(self, Review):
-        _translate = QtCore.QCoreApplication.translate
-        Review.setWindowTitle(_translate("Review", "MainWindow"))
-        self.review_label.setText(_translate("Review", "Review"))
-        self.helpButton.setText(_translate("Review", "Help"))
-        self.submitButton.setText(_translate("Review", "Submit"))
-        self.cancelButton.setText(_translate("Review", "Cancel"))
-
-
-class Review:
-    def __init__(self, username, rating, comment):
-        self.username = username
-        self.rating = rating
-        self.comment = comment
-
-
-class ParkingApp:
-    def __init__(self, name):
-        self.name = name
-
-
-class ReviewWindow(QtWidgets.QMainWindow):
+class ReviewsWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Review")
+        self.setWindowTitle("Reviews")
         self.setGeometry(100, 100, 400, 300)
-
-        self.ui = Ui_Review()
-        self.ui.setupUi(self)
 
         self.reviews = []  # List to store the reviews
 
-        # Connect button signals to functions
-        self.ui.helpButton.clicked.connect(self.showHelp)
-        self.ui.submitButton.clicked.connect(self.submitReview)
-        self.ui.cancelButton.clicked.connect(self.close)
-
-    def showHelp(self):
-        # Function to show help information
-        QtWidgets.QMessageBox.information(self, "Help", "Help information goes here.")
+   
+        main_layout = QtWidgets.QVBoxLayout()
+        label_review = QtWidgets.QLabel("Enter Review:")
+        main_layout.addWidget(label_review)
+        self.input_review = QtWidgets.QLineEdit()
+        main_layout.addWidget(self.input_review)
+        label_stars = QtWidgets.QLabel("Enter Stars: ")
+        main_layout.addWidget(label_stars)
+        self.input_stars = QtWidgets.QLineEdit()
+        main_layout.addWidget(self.input_stars)
+        btn_submit = QtWidgets.QPushButton("Submit Review")
+        btn_submit.clicked.connect(self.submitReview)
+        btn_choose_stars = QtWidgets.QPushButton("Submitt Stars")
+        btn_choose_stars.clicked.connect(self.chooseStars)
+        btn_upload = QtWidgets.QPushButton("Upload")
+        btn_upload.clicked.connect(self.uplooad)
+        main_layout.addWidget(btn_submit)
+        main_layout.addWidget(btn_choose_stars)
+        
+        self.list_reviews = QtWidgets.QListWidget()
+        main_layout.addWidget(self.list_reviews)
+        central_widget = QtWidgets.QWidget()
+        central_widget.setLayout(main_layout)
+        self.setCentralWidget(central_widget)
+        main_layout.addWidget(btn_upload)
 
     def submitReview(self):
         # Function to handle review submission
-        username = "Alexis tsampas  "  # Replace with the actual username
-        rating = 5  # Replace with the actual rating value
-        comment = "This is a great app!"  # Replace with the actual comment
+        review_text = self.input_review.text()
 
-        review = Review(username, rating, comment)
-        self.reviews.append(review)
+        if review_text:
+            # Add the review to the list
+            self.reviews.append(review_text)
 
-        # Do something with the submitted review data (e.g., store in a database)
+            # Clear the input field
+            self.input_review.clear()
 
-        # Show a message box to indicate successful submission
-        QtWidgets.QMessageBox.information(self, "Success", "Review submitted successfully.")
+            # Update the list widget to display the reviews
+            self.updateReviewList()
+        else:
+            self.incompletereview()
 
-        # Clear the input fields
-        # self.ui.usernameLineEdit.clear()
-        # self.ui.ratingSpinBox.setValue(0)
-        # self.ui.commentTextEdit.clear()
+    def updateReviewList(self):
+        # Function to update the list widget with the submitted reviews
+        self.list_reviews.clear()
+        self.list_reviews.addItems(self.reviews)
 
+    def incompletereview(self):
+        # Function to display a message box with a warning for incomplete review
+        QtWidgets.QMessageBox.warning(self, "Incomplete Review", "Please enter a review before submitting.")
+
+    
+    def chooseStars(self):
+        # Function to display a message box with a warning for incomplete review
+        QtWidgets.QMessageBox.warning(self, "Enter stars", "Please enter the stars before submitt your reviews.")
+
+    def uplooad(self):
+        # Function to display a message box with a warning for incomplete review
+        QtWidgets.QMessageBox.warning(self, "Your review has been uploaded to the system!")
+
+    def confirmation(self):
+        # Function to display a message box with a warning for incomplete review
+        QtWidgets.QMessageBox.warning(self, "Confirm this review")
+
+    def writereview(self):
+        # Function to open a dialog for writing a review
+        review_text, ok = QtWidgets.QInputDialog.getText(self, "Write Review", "Enter your review:")
+
+        if ok and review_text:
+            # Add the review to the list
+            self.reviews.append(review_text)
+
+            # Update the list widget to display the reviews
+            self.updateReviewList()
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    reviewWindow = ReviewWindow()
-    reviewWindow.show()
+    reviews_window = ReviewsWindow()
+    reviews_window.show()
     sys.exit(app.exec_())
