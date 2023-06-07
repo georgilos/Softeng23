@@ -21,7 +21,7 @@ class ReviewsWindow(QtWidgets.QMainWindow):
         main_layout.addWidget(self.input_stars)
         btn_submit = QtWidgets.QPushButton("Submit Review")
         btn_submit.clicked.connect(self.submitReview)
-        btn_choose_stars = QtWidgets.QPushButton("Submitt Stars")
+        btn_choose_stars = QtWidgets.QPushButton("Submit Stars")
         btn_choose_stars.clicked.connect(self.chooseStars)
         btn_upload = QtWidgets.QPushButton("Upload")
         btn_upload.clicked.connect(self.uplooad)
@@ -66,11 +66,11 @@ class ReviewsWindow(QtWidgets.QMainWindow):
         QtWidgets.QMessageBox.warning(self, "Enter stars", "Please enter the stars before submitt your reviews.")
 
     def uplooad(self):
-        # Function to display a message box with a warning for incomplete review
+        # Function to display a message box with a message for upload the review
         QtWidgets.QMessageBox.warning(self, "Your review has been uploaded to the system!")
 
     def confirmation(self):
-        # Function to display a message box with a warning for incomplete review
+        # Function to display a message box for the confirmation
         QtWidgets.QMessageBox.warning(self, "Confirm this review")
 
     def writereview(self):
