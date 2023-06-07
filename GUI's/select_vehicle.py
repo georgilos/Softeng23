@@ -5,7 +5,7 @@ class Ui_Select_Vehicle(object):
     def setupUi(self, Select_Vehicle):
         Select_Vehicle.setObjectName("Select_Vehicle")
         Select_Vehicle.resize(573, 600)
-        Select_Vehicle.setStyleSheet("background-image: url(:/newPrefix/back1.jpg);")
+        Select_Vehicle.setStyleSheet("background-color: lightblue;")
         self.centralwidget = QtWidgets.QWidget(Select_Vehicle)
         self.centralwidget.setObjectName("centralwidget")
         self.layoutWidget = QtWidgets.QWidget(self.centralwidget)
