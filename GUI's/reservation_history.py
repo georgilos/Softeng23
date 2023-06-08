@@ -2,13 +2,8 @@ import sys
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget, QScrollArea, QRadioButton, \
-    QPushButton, QFrame, QHBoxLayout
-
-
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget, QScrollArea, QRadioButton, \
-    QPushButton, QFrame, QHBoxLayout
-
+QPushButton, QFrame, QHBoxLayout
+from PyQt5.QtGui import QColor
 
 class ReservationHistoryWindow(QMainWindow):
     def __init__(self):
@@ -26,7 +21,7 @@ class ReservationHistoryWindow(QMainWindow):
         scroll_area.setWidgetResizable(True)
 
         # Create a widget to hold the radio buttons
-        scroll_content = QWidget(scroll_area)
+        scroll_content = QWidget()
         scroll_area.setWidget(scroll_content)
 
         # Create a layout for the scroll content
@@ -70,6 +65,11 @@ class ReservationHistoryWindow(QMainWindow):
         
         back_button = QPushButton("Back", self)
         back_button.clicked.connect(self.open_main_window)
+        
+        delete_history_button = QPushButton("Delete History", self)
+        delete_history_button.clicked.connect(self.deleteHistory)
+        delete_history_button.setStyleSheet("color: red")
+
 
         # Create a layout for the main window
         main_layout = QVBoxLayout()
@@ -77,35 +77,17 @@ class ReservationHistoryWindow(QMainWindow):
         main_layout.addWidget(scroll_area)
         main_layout.addWidget(select_button)
         main_layout.addWidget(back_button)
+        main_layout.addWidget(delete_history_button)
 
         # Set the main layout in the main window
-        main_widget = QWidget()
-        main_widget.setLayout(main_layout)
-        self.setCentralWidget(main_widget)
+        central_widget = QWidget(self)
+        central_widget.setLayout(main_layout)
+        self.setCentralWidget(central_widget)
 
-    def got(self):
-        print("Got method called")
-
-    def choose(self):
-        print("Choose method called")
-
-    def showReservationHistory(self):
-        print("Show Reservation History method called")
-
-    def takeInfo(self):
-        print("Take Info method called")
-
-    def returnInfo(self):
-        print("Return Info method called")
-
-    def fullList(self):
-        print("Full List method called")
-
+        
+        
     def chooseSpot(self):
         print("Choose Spot method called")
-
-    def showDetailedInfo(self):
-        print("Show Detailed Info method called")
 
     def deleteHistory(self):
         print("Delete History method called")
@@ -113,7 +95,6 @@ class ReservationHistoryWindow(QMainWindow):
     def open_main_window(self):
         # Replace with your logic to open the main window
         print("Open Main Window method called")
-
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
