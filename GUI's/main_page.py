@@ -3,7 +3,7 @@ from PyQt5.uic import loadUi
 from parking_search import ParkingSearchWindow
 from user_support import SupportWindow
 from Reviews import ReviewsWindow
-from Gifts import GiftsWindow
+from Gifts import Gifts
 import sys
 
 
@@ -126,7 +126,7 @@ class Ui_MainWindow(object):
        
 
     def open_Gifts(self):
-        self.Gifts= GiftsWindow()
+        self.Gifts= Gifts()
         self.Gifts.show()
 
     def open_user_support(self):
