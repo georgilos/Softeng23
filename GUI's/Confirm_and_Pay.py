@@ -85,7 +85,21 @@ class ConfirmPayWindow(QtWidgets.QMainWindow):
     
 
 
-  
+    def confirmPayment(self):
+        # Function to handle payment confirmation
+        QtWidgets.QMessageBox.information(self, "Payment Confirmed", "Payment has been confirmed.")
+
+    def showPaymentProblem(self):
+        # Function to handle payment problem
+        QtWidgets.QMessageBox.information(self, "Payment Problem")
+
+    def cancelReservation(self):
+        # Function to cancel the reservation
+        QtWidgets.QMessageBox.information(self, "Your reservation has been canceled!")
+
+    def returnNumberPoints(self):
+        QtWidgets.QMessageBox.information(self, "Your Points will be added on the system")
+         
 
 class PersonalInfoDialog(QtWidgets.QDialog):
     def __init__(self, parent=None):
