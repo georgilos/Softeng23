@@ -34,9 +34,9 @@ class ReservationHistoryWindow(QMainWindow):
 
         # Add radio buttons, names, addresses, and line separators for parking options
         parking_options = [
-            {"name": "Parking 1", "address": "Morfou  1, Patra, 26441                                    23/06/2023"},
+            {"name": "Parking 1", "address": "Morfou  1, Patra, 26441                                     23/06/2023"},
             {"name": "Parking 2", "address": "Mourouzi 13, Patra, 26223                                  19/06/2023"},
-            {"name": "Parking 3", "address": "Alimousiwn 12, Athina, 11851                               12/05/2023"},
+            {"name": "Parking 3", "address": "Alimousiwn 12, Athina, 11851                             12/05/2023"},
             {"name": "Parking 4", "address": "Sfakianakh 9, Athina, 10445                                06/05/2023"},
         ]
 
