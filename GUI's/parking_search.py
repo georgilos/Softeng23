@@ -1,7 +1,8 @@
 import sys
+from PyQt5 import QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget, QScrollArea, QRadioButton, \
-    QPushButton, QFrame
+    QPushButton, QFrame, QHBoxLayout
 
 
 class ParkingSearchWindow(QMainWindow):
@@ -23,17 +24,41 @@ class ParkingSearchWindow(QMainWindow):
         scroll_content = QWidget(scroll_area)
         scroll_area.setWidget(scroll_content)
 
-        # Create a layout for the radio buttons
+        # Create a layout for the scroll content
         scroll_layout = QVBoxLayout(scroll_content)
 
-        # Add radio buttons and line separators for parking options
-        parking_options = ["Parking 1", "Parking 2", "Parking 3", "Parking 4", "Parking 5", "Parking 6",
-                           "Parking 7", "Parking 8", "Parking 9"]
-        for option in parking_options:
-            radio_button = QRadioButton(option, self)
-            scroll_layout.addWidget(radio_button)
+        # Add radio buttons, names, addresses, and line separators for parking options
+        parking_options = [
+            {"name": "Parking 1", "address": "Lincoln Str. 16, Ohio, 16673"},
+            {"name": "Parking 2", "address": "Main Str. 24, California, 90210"},
+            {"name": "Parking 3", "address": "Broadway Ave. 8, New York, 10001"},
+            {"name": "Parking 4", "address": "Park Lane 12, Texas, 77001"},
+            {"name": "Parking 5", "address": "Elm St. 3, Florida, 33602"},
+            {"name": "Parking 6", "address": "Maple Ave. 20, Illinois, 60601"},
+            {"name": "Parking 7", "address": "Oak Dr. 14, Washington, 98101"},
+            {"name": "Parking 8", "address": "Pine St. 9, Massachusetts, 02108"},
+            {"name": "Parking 9", "address": "Cedar Rd. 6, Arizona, 85001"}
+        ]
 
-            # Add a line separator after each radio button
+        for option in parking_options:
+            radio_button = QRadioButton(self)
+            name_label = QLabel(option["name"], self)
+            name_label.setStyleSheet("font-size: 12pt; font-weight: bold")
+            name_label.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
+
+            address_label = QLabel(option["address"], self)
+            address_label.setAlignment(Qt.AlignHCenter | Qt.AlignTop)
+
+            # Create a layout for the radio button and name
+            option_layout = QHBoxLayout()
+            option_layout.addWidget(radio_button)
+            option_layout.addWidget(name_label)
+            option_layout.addStretch()
+
+            scroll_layout.addLayout(option_layout)
+            scroll_layout.addWidget(address_label)
+
+            # Add a line separator after each parking option
             line_separator = QFrame(self)
             line_separator.setFrameShape(QFrame.HLine)
             line_separator.setFrameShadow(QFrame.Sunken)
@@ -42,6 +67,8 @@ class ParkingSearchWindow(QMainWindow):
         # Create the Select Parking and Back buttons
         select_button = QPushButton("Select Parking", self)
         back_button = QPushButton("Back", self)
+        back_button.clicked.connect(self.open_main_window)
+
 
         # Create a layout for the main window
         main_layout = QVBoxLayout()
@@ -54,7 +81,15 @@ class ParkingSearchWindow(QMainWindow):
         main_widget = QWidget()
         main_widget.setLayout(main_layout)
         self.setCentralWidget(main_widget)
-
+    
+    
+    def open_main_window(self):
+        from main_page import Ui_MainWindow
+        self.main_page = QtWidgets.QMainWindow()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self.main_page)
+        self.main_page.show()
+        self.close()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
