@@ -5,10 +5,15 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWid
     QPushButton, QFrame, QHBoxLayout
 
 
-class ParkingSearchWindow(QMainWindow):
+import sys
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget, QScrollArea, QRadioButton, \
+    QPushButton, QFrame, QHBoxLayout
+
+
+class ReservationHistoryWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("ReservationHistoryWindow!")
+        self.setWindowTitle("ReservationHistoryWindow")
         self.setGeometry(100, 100, 400, 400)
 
         # Create the main title label
@@ -29,11 +34,10 @@ class ParkingSearchWindow(QMainWindow):
 
         # Add radio buttons, names, addresses, and line separators for parking options
         parking_options = [
-            {"name": "Parking 1", "address": "Morfou  1, Patra, 26441"},
-            {"name": "Parking 2", "address": "Mourouzi 13, Patra, 26223"},
-            {"name": "Parking 3", "address": "Alimousiwn 12, Athina, 11851"},
-            {"name": "Parking 4", "address": "Sfakianakh 9, Athina, 10445"},
-            
+            {"name": "Parking 1", "address": "Morfou  1, Patra, 26441                                    23/06/2023"},
+            {"name": "Parking 2", "address": "Mourouzi 13, Patra, 26223                                  19/06/2023"},
+            {"name": "Parking 3", "address": "Alimousiwn 12, Athina, 11851                               12/05/2023"},
+            {"name": "Parking 4", "address": "Sfakianakh 9, Athina, 10445                                06/05/2023"},
         ]
 
         for option in parking_options:
@@ -62,9 +66,10 @@ class ParkingSearchWindow(QMainWindow):
 
         # Create the Select Parking and Back buttons
         select_button = QPushButton("Select Parking", self)
+        select_button.clicked.connect(self.chooseSpot)
+        
         back_button = QPushButton("Back", self)
         back_button.clicked.connect(self.open_main_window)
-
 
         # Create a layout for the main window
         main_layout = QVBoxLayout()
@@ -77,18 +82,41 @@ class ParkingSearchWindow(QMainWindow):
         main_widget = QWidget()
         main_widget.setLayout(main_layout)
         self.setCentralWidget(main_widget)
-    
-    
+
+    def got(self):
+        print("Got method called")
+
+    def choose(self):
+        print("Choose method called")
+
+    def showReservationHistory(self):
+        print("Show Reservation History method called")
+
+    def takeInfo(self):
+        print("Take Info method called")
+
+    def returnInfo(self):
+        print("Return Info method called")
+
+    def fullList(self):
+        print("Full List method called")
+
+    def chooseSpot(self):
+        print("Choose Spot method called")
+
+    def showDetailedInfo(self):
+        print("Show Detailed Info method called")
+
+    def deleteHistory(self):
+        print("Delete History method called")
+
     def open_main_window(self):
-        from main_page import Ui_MainWindow
-        self.main_page = QtWidgets.QMainWindow()
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self.main_page)
-        self.main_page.show()
-        self.close()
+        # Replace with your logic to open the main window
+        print("Open Main Window method called")
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = ParkingSearchWindow()
+    window = ReservationHistoryWindow()
     window.show()
     sys.exit(app.exec_())
