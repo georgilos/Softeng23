@@ -1,8 +1,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.uic import loadUi
-from parking_search import ParkingWindow
+from parking_search import ParkingSearchWindow
 from user_support import SupportWindow
-from Reviews import ReviewWindow
+from Reviews import ReviewsWindow
 from Gifts import GiftsWindow
 import sys
 
@@ -114,13 +114,13 @@ class Ui_MainWindow(object):
         self.user_support_button.clicked.connect(self.open_user_support)
 
     def open_parking_search(self):
-        self.parking_search = ParkingWindow()
+        self.parking_search = ParkingSearchWindow()
         self.parking_search.show()
 
         
 
     def open_Reviews(self):
-        self.Reviews= ReviewWindow()
+        self.Reviews= ReviewsWindow()
         self.Reviews.show()
         
        
