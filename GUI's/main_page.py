@@ -116,23 +116,23 @@ class Ui_MainWindow(object):
     def open_parking_search(self):
         self.parking_search = ParkingSearchWindow()
         self.parking_search.show()
-        MainWindow.close()
+        self.centralwidget.window().close()
 
     def open_Reviews(self):
         self.Reviews= ReviewsWindow()
         self.Reviews.show()
-        MainWindow.close()
+        self.centralwidget.window().close()
        
     def open_Gifts(self):
         self.Gifts= Gifts()
         self.Gifts.show()
-        MainWindow.close()
+        self.centralwidget.window().close()
 
     def open_user_support(self):
         self.user_support = QtWidgets.QMainWindow()
         self.ui = SupportWindow()
         self.ui.show()
-        MainWindow.close()
+        self.centralwidget.window().close()
 
 
 if __name__ == "__main__":
