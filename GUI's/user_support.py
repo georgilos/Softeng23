@@ -29,3 +29,11 @@ class SupportWindow(QWidget):
         answer1 = self.entry1.text()
         answer2 = self.entry2.text()
         QMessageBox.information(self, "AI Support", f"Hi {answer1}\nSomeone from our team will try to fix the problem: {answer2}")
+
+
+    
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    window = SupportWindow()
+    sys.exit(app.exec_())
