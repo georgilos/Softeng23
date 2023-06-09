@@ -118,7 +118,7 @@ class Ui_Select_Spot(object):
 
     def retranslateUi(self, Select_Spot):
         _translate = QtCore.QCoreApplication.translate
-        Select_Spot.setWindowTitle(_translate("Select_Spot", "MainWindow"))
+        Select_Spot.setWindowTitle(_translate("Select_Spot", "AvailableSpotsWindow"))
         self.ProceedButton.setText(_translate("Select_Spot", "Proceed"))
         self.Back_Button.setText(_translate("Select_Spot", "Back"))
         self.Available_Parking_Spots_label.setText(_translate("Select_Spot", "Available Parking Spots"))

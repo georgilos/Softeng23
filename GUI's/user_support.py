@@ -1,11 +1,12 @@
 import sys
+from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QMessageBox
 
 class SupportWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("AI Support")
-        
+
         message_label = QLabel("Welcome to the AI Support of PARKARE TO!", self)
         message_label.move(10, 10)
 
@@ -29,3 +30,10 @@ class SupportWindow(QWidget):
         answer1 = self.entry1.text()
         answer2 = self.entry2.text()
         QMessageBox.information(self, "AI Support", f"Hi {answer1}\nSomeone from our team will try to fix the problem: {answer2}")
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = SupportWindow()
+    window.show()
+    sys.exit(app.exec_())
