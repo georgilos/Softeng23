@@ -54,7 +54,6 @@ class Ui_checkout(object):
         self.retranslateUi(checkout)
         QtCore.QMetaObject.connectSlotsByName(checkout)
 
-
     def retranslateUi(self, checkout):
         _translate = QtCore.QCoreApplication.translate
         checkout.setWindowTitle(_translate("checkout", "CheckOutWindow"))
