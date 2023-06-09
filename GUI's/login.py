@@ -101,9 +101,9 @@ class Login_Window(object):
         mycursor.execute(query, value)
         result = mycursor.fetchone()
 
+        #Redirect to tha main page or perform any other actions
         if result is not None:
-            self.labelResult.setText("Login Successful")
-            # Redirect to the main page or perform any other actions
+            self.labelResult.setText("Login Successful") 
         else:
             self.labelResult.setText("Invalid Credentials")
 

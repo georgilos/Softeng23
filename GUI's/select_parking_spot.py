@@ -38,7 +38,7 @@ class SpotSelectionWindow(QWidget):
 
         self.layout.addStretch()
 
-        # Connect the "Back" button click event to the handler
+        # Connect to the "Back" button click event to the handler
         self.back_button.clicked.connect(self.open_parking_search_window)
 
     def open_parking_search_window(self):

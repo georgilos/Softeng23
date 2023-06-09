@@ -24,6 +24,7 @@ class SupportWindow(QWidget):
         self.entry2 = QLineEdit(self)
         self.entry2.move(10, 131)
 
+        # The button of submit the question
         submit_button = QPushButton("Submit", self)
         submit_button.move(10, 160)
         submit_button.clicked.connect(self.submit_answer)
