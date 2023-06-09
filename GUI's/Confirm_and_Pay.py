@@ -61,14 +61,15 @@ class ConfirmPayWindow(QtWidgets.QMainWindow):
     def proceedToConfirmPay(self):
         self.show()
 
+    # Function to display the personal information
+
     def showPersonalInfo(self):
-        # Function to display the personal information
         self.line_name.setText(self.personal_info["card_number"])
         self.line_email.setText(self.personal_info["expired_date"])
         self.line_address.setText(self.personal_info["cvv"])
 
+    # Function to open a dialog for changing personal information
     def changePersonalInfo(self):
-        # Function to open a dialog for changing personal information
         dialog = PersonalInfoDialog(self)
         if dialog.exec_() == QtWidgets.QDialog.Accepted:
             self.personal_info["card_number"] = dialog.card_number
@@ -78,30 +79,33 @@ class ConfirmPayWindow(QtWidgets.QMainWindow):
 
     # def unchangedPersonalInfo(self):
 
-
+    # Function to display a message box indicating being on time
     def inTime(self):
-        # Function to display a message box indicating being on time
         QtWidgets.QMessageBox.information(self, "On Time", "You are in time for your reservation.")
 
+
+    # Function to display a message box indicating being on time
     def outOfTime(self):
-        # Function to display a message box indicating being on time
         QtWidgets.QMessageBox.information(self, "Out of Time", "You are out of time for your reservation. You have extra charge")
 
     
 
 
+
+
+    # Function to handle payment confirmation
     def confirmPayment(self):
-        # Function to handle payment confirmation
         QtWidgets.QMessageBox.information(self, "Payment Confirmed", "Payment has been confirmed.")
 
+    # Function to handle payment problem
     def showPaymentProblem(self):
-        # Function to handle payment problem
         QtWidgets.QMessageBox.information(self, "Payment Problem")
 
+    # Function to cancel the reservation
     def cancelReservation(self):
-        # Function to cancel the reservation
         QtWidgets.QMessageBox.information(self, "Your reservation has been canceled!")
 
+    #The return number of points
     def returnNumberPoints(self):
         QtWidgets.QMessageBox.information(self, "Your Points will be added on the system")
          
@@ -114,11 +118,13 @@ class PersonalInfoDialog(QtWidgets.QDialog):
         # Create the main layout
         main_layout = QtWidgets.QVBoxLayout()
 
+        
         # Create line edits for personal information
         self.line_name = QtWidgets.QLineEdit()
         self.line_email = QtWidgets.QLineEdit()
         self.line_address = QtWidgets.QLineEdit()
 
+        
         # Add the line edits to the main layout
         main_layout.addWidget(QtWidgets.QLabel("Name:"))
         main_layout.addWidget(self.line_name)
@@ -127,7 +133,7 @@ class PersonalInfoDialog(QtWidgets.QDialog):
         main_layout.addWidget(QtWidgets.QLabel("Address:"))
         main_layout.addWidget(self.line_address)
 
-        # Create buttons for accepting or rejecting changes
+        # Create buttons for accepting and rejecting changes
         button_box = QtWidgets.QDialogButtonBox(QtWidgets.QDialogButtonBox.Ok | QtWidgets.QDialogButtonBox.Cancel)
         button_box.accepted.connect(self.accept)
         button_box.rejected.connect(self.reject)

@@ -46,7 +46,7 @@ class Ui_MainWindow(object):
         self.reservation_history_button.setFont(font)
         self.reservation_history_button.setStyleSheet("background-color: lightcyan;")
         self.reservation_history_button.setObjectName("reservation_history_button")
-        self.gridLayout.addWidget(self.reservation_history_button, 4, 2, 10, 20)
+        self.gridLayout.addWidget(self.reservation_history_button, 4, 2, 10, 21)
         self.reservation_history_button.setSizePolicy(sizePolicy)
 
         self.change_user_button = QtWidgets.QPushButton(self.layoutWidget)
@@ -54,7 +54,7 @@ class Ui_MainWindow(object):
         font.setPointSize(11)
         self.change_user_button.setFont(font)
         self.change_user_button.setObjectName("change_user_button")
-        self.gridLayout.addWidget(self.change_user_button, 6, 2, 10, 20)
+        self.gridLayout.addWidget(self.change_user_button, 6, 2, 10, 21)
         self.change_user_button.setSizePolicy(sizePolicy)
 
         self.gifts_button = QtWidgets.QPushButton(self.layoutWidget)
@@ -63,7 +63,7 @@ class Ui_MainWindow(object):
         font.setPointSize(11)
         self.gifts_button.setFont(font)
         self.gifts_button.setObjectName("gifts_button")
-        self.gridLayout.addWidget(self.gifts_button, 8, 2, 10, 20)
+        self.gridLayout.addWidget(self.gifts_button, 8, 2, 10, 21)
         self.gifts_button.setSizePolicy(sizePolicy)
 
         self.Reviews_button = QtWidgets.QPushButton(self.layoutWidget)
@@ -72,7 +72,7 @@ class Ui_MainWindow(object):
         font.setPointSize(11)
         self.Reviews_button.setFont(font)
         self.Reviews_button.setObjectName("Reviews_button")
-        self.gridLayout.addWidget(self.Reviews_button, 10, 2, 10, 20)
+        self.gridLayout.addWidget(self.Reviews_button, 10, 2, 10, 21)
         self.Reviews_button.setSizePolicy(sizePolicy)
 
         self.user_support_button = QtWidgets.QPushButton(self.centralwidget)
@@ -81,7 +81,7 @@ class Ui_MainWindow(object):
         font.setPointSize(11)
         self.user_support_button.setFont(font)
         self.user_support_button.setObjectName("user_support_button")
-        self.gridLayout.addWidget(self.user_support_button, 12, 2, 10, 20)
+        self.gridLayout.addWidget(self.user_support_button, 12, 2, 10, 21)
         self.user_support_button.setSizePolicy(sizePolicy)
 
         MainWindow.setCentralWidget(self.centralwidget)
@@ -116,7 +116,7 @@ class Ui_MainWindow(object):
         self.user_support_button.clicked.connect(self.open_user_support)
         self.reservation_history_button.clicked.connect(self.open_Reservation_History)
 
-
+    
     def open_parking_search(self):
         self.parking_search = ParkingSearchWindow()
         self.parking_search.show()

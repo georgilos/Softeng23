@@ -29,12 +29,12 @@ class ParkingSearchWindow(QMainWindow):
 
         # Add radio buttons, names, addresses, and line separators for parking options
         parking_options = [
-            {"name": "Parking 1", "address": "Lincoln Str. 16, Ohio, 16673"},
+            {"name": "Parking 1", "address": "Lincoln St. 212, California, 90210"},
             {"name": "Parking 2", "address": "Main Str. 24, California, 90210"},
             {"name": "Parking 3", "address": "Broadway Ave. 8, New York, 10001"},
-            {"name": "Parking 4", "address": "Park Lane 12, Texas, 77001"},
+            {"name": "Parking 4", "address": "Maple Ave. 20, Illinois, 60601"},
             {"name": "Parking 5", "address": "Elm St. 3, Florida, 33602"},
-            {"name": "Parking 6", "address": "Maple Ave. 20, Illinois, 60601"},
+            {"name": "Parking 6", "address": "Park Lane 12, Texas, 77001"},
             {"name": "Parking 7", "address": "Oak Dr. 14, Washington, 98101"},
             {"name": "Parking 8", "address": "Pine St. 9, Massachusetts, 02108"},
             {"name": "Parking 9", "address": "Cedar Rd. 6, Arizona, 85001"}

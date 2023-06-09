@@ -10,22 +10,26 @@ class SupportWindow(QWidget):
         message_label = QLabel("Welcome to the AI Support of PARKARE TO!", self)
         message_label.move(10, 10)
 
+        # The username of user
         question1_label = QLabel("What is your username?", self)
         question1_label.move(10, 40)
 
         self.entry1 = QLineEdit(self)
         self.entry1.move(10, 70)
 
+        #The application ask the user how help him?
         question2_label = QLabel("How can I help you?", self)
         question2_label.move(10, 100)
 
         self.entry2 = QLineEdit(self)
         self.entry2.move(10, 131)
 
+        # The button of submit the question
         submit_button = QPushButton("Submit", self)
         submit_button.move(10, 160)
         submit_button.clicked.connect(self.submit_answer)
 
+    #The answer of the AI
     def submit_answer(self):
         answer1 = self.entry1.text()
         answer2 = self.entry2.text()

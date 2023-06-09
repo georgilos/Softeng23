@@ -19,7 +19,7 @@ class MyWindow(QtWidgets.QWidget):
         
         self.layout = QtWidgets.QVBoxLayout(self)
         self.layout.setAlignment(QtCore.Qt.AlignCenter)
-      #Name 
+      # Name 
         self.label_name = QtWidgets.QLabel("Name:", self)
         self.layout.addWidget(self.label_name)
 
@@ -28,7 +28,7 @@ class MyWindow(QtWidgets.QWidget):
         self.layout.addWidget(self.line_name)
 
 
-    # Lastname
+    # Lastname 
 
         self.label_lastname = QtWidgets.QLabel("Lastname:", self)
         self.layout.addWidget(self.label_lastname)
@@ -42,7 +42,7 @@ class MyWindow(QtWidgets.QWidget):
         self.layout.addWidget(self.button_change_lastname)
 
 
-    # Email
+    # Email 
 
         self.label_email = QtWidgets.QLabel("Email:", self)
         self.layout.addWidget(self.label_email)
@@ -104,51 +104,59 @@ class MyWindow(QtWidgets.QWidget):
         
         self.show()
     
-    
+    #Change Name function
     def change_name(self):
         new_name = self.line_name.text()
         self.name = new_name
         QtWidgets.QMessageBox.information(self, "Name Changed", "Name has been changed to: {}".format(new_name))
 
-      
+    #change lastname function
     def change_lastname(self):
         new_lastname = self.line_lastname.text()
         self.lastname = new_lastname
         QtWidgets.QMessageBox.information(self, "LastName Changed", "LastName has been changed to: {}".format(new_lastname))
 
+    #change email function
     def change_email(self):
         new_email = self.line_email.text()
         self.email = new_email
         QtWidgets.QMessageBox.information(self, "Email Changed", "Email has been changed to: {}".format(new_email))
 
+    #Change username function
     def change_username(self):
         new_username = self.line_username.text()
         self.username = new_username
         QtWidgets.QMessageBox.information(self, "Username Changed", "Username has been changed to: {}".format(new_username))
     
+    #Change password function
     def change_password(self):
         new_password = self.line_password.text()
         self.password = new_password
         QtWidgets.QMessageBox.information(self, "Password Changed", "Password has been changed to: {}".format(new_password))
 
-
+    #change vehicleid function
     def change_vehicleid(self):
         new_vehicleid= self.line_username.text()
         self.vehicleid = new_vehicleid
         QtWidgets.QMessageBox.information(self, "VehicleID Changed", "VehicleID has been changed to: {}".format(new_vehicleid))
     
+    #show current info function
     def showCurrentInfo(self):
         QtWidgets.QMessageBox.warning(self, "Show User Details", "User details: Username - {}, Password - {}".format(self.username, self.password))
 
+    #show Personal user info funtion
     def editPersonalInfo(self):
         QtWidgets.QMessageBox.warning(self, "Show Edit Details", "User details: Username - {}, Password - {}".format(self.username, self.password))
     
+    #Update New Info function
     def updateNewInfo(self):
         QtWidgets.QMessageBox.information(self, "Update", "Your details are updated")
 
+    #Wrong password function
     def wrong_password(self):
         QtWidgets.QMessageBox.warning(self, "Wrong Password", "Invalid password. Please try again.")
     
+    #wrong card info function
     def wrong_CardInfo(self):
         QtWidgets.QMessageBox.warning(self, "Wrong CardInfo", "Invalid card info. Please try again.")
     

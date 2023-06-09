@@ -7,7 +7,7 @@ class ReviewsWindow(QtWidgets.QMainWindow):
         self.setWindowTitle("Reviews")
         self.setGeometry(100, 100, 400, 300)
 
-        self.reviews = []  # List to store the reviews
+        self.reviews = [] # List to store the reviews
 
    
         main_layout = QtWidgets.QVBoxLayout()
@@ -51,34 +51,35 @@ class ReviewsWindow(QtWidgets.QMainWindow):
         else:
             self.incompletereview()
 
+
+    # Function to update the list widget with the submitted reviews
     def updateReviewList(self):
-        # Function to update the list widget with the submitted reviews
+        
         self.list_reviews.clear()
         self.list_reviews.addItems(self.reviews)
-
+    
+    # Function to display a message box with a warning for incomplete review
     def incompletereview(self):
-        # Function to display a message box with a warning for incomplete review
         QtWidgets.QMessageBox.warning(self, "Incomplete Review", "Please enter a review before submitting.")
 
-    
+    # Function to display a message box with a warning for incomplete review
     def chooseStars(self):
-        # Function to display a message box with a warning for incomplete review
         QtWidgets.QMessageBox.warning(self, "Enter stars", "Please enter the stars before submitt your reviews.")
 
+    # Function to display a message box with a message for upload the review
     def uplooad(self):
-        # Function to display a message box with a message for upload the review
         QtWidgets.QMessageBox.warning(self, "Your review has been uploaded to the system!")
 
+    # Function to display a message box for the confirmation
     def confirmation(self):
-        # Function to display a message box for the confirmation
         QtWidgets.QMessageBox.warning(self, "Confirm this review")
 
+    # Function to open a dialog for writing a review
     def writereview(self):
-        # Function to open a dialog for writing a review
         review_text, ok = QtWidgets.QInputDialog.getText(self, "Write Review", "Enter your review:")
 
+        # Here we add the revie to the list
         if ok and review_text:
-            # Add the review to the list
             self.reviews.append(review_text)
 
             # Update the list widget to display the reviews

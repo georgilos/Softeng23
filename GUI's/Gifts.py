@@ -48,7 +48,7 @@ class Gifts(QtWidgets.QWidget):
         if len(self.gifts) == 0:
             QtWidgets.QMessageBox.information(self, "No Gifts", "No gifts found.")
         else:
-            # Prompt the user to select a gift
+            # Prompt the user to select gifts
             selected_gift, ok = QtWidgets.QInputDialog.getItem(
                 self,
                 "Gift Selection",
@@ -68,19 +68,22 @@ class Gifts(QtWidgets.QWidget):
 
                 QtWidgets.QMessageBox.information(self, "Selected Gift", selected_gift_info)
 
+    #valid selection function
     def validSelection(self):
         QtWidgets.QMessageBox.information(self, "Valid Selection")
 
+    #invalid selection function
     def validSelection(self):
         QtWidgets.QMessageBox.information(self, "Invalid Selection")
 
-
+    #add points function
     def addPoints(self):
           QtWidgets.QMessageBox.information(self, "Your Points will be added!")
 
+    #avaliable points function
     def isAvailablePoints(self):
           QtWidgets.QMessageBox.information(self, "Your Points are  available!")    
-
+    #notAvaliablePoints function
     def notAvailablePoints(self):
           QtWidgets.QMessageBox.information(self, "Your Points are not available!")
 
