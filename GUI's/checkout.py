@@ -1,5 +1,3 @@
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -50,24 +48,17 @@ class Ui_checkout(object):
         self.statusbar = QtWidgets.QStatusBar(checkout)
         self.statusbar.setObjectName("statusbar")
         checkout.setStatusBar(self.statusbar)
+        self.checkoutButton.clicked.connect(self.checkOut)
+        self.problemButton.clicked.connect(self.isValidCheckout)
 
         self.retranslateUi(checkout)
         QtCore.QMetaObject.connectSlotsByName(checkout)
 
+
     def retranslateUi(self, checkout):
         _translate = QtCore.QCoreApplication.translate
-        checkout.setWindowTitle(_translate("checkout", "MainWindow"))
+        checkout.setWindowTitle(_translate("checkout", "CheckOutWindow"))
         self.checkout_label.setText(_translate("checkout", "Check-out"))
         self.helpButton.setText(_translate("checkout", "!"))
         self.checkoutButton.setText(_translate("checkout", "Checkout"))
         self.problemButton.setText(_translate("checkout", "Problem"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    checkout = QtWidgets.QMainWindow()
-    ui = Ui_checkout()
-    ui.setupUi(checkout)
-    checkout.show()
-    sys.exit(app.exec_())
