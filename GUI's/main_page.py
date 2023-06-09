@@ -116,7 +116,7 @@ class Ui_MainWindow(object):
         self.user_support_button.clicked.connect(self.open_user_support)
         self.reservation_history_button.clicked.connect(self.open_Reservation_History)
 
-
+    
     def open_parking_search(self):
         self.parking_search = ParkingSearchWindow()
         self.parking_search.show()
