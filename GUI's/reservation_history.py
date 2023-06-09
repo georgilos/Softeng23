@@ -62,14 +62,13 @@ class ReservationHistoryWindow(QMainWindow):
         # Create the Select Parking and Back buttons
         select_button = QPushButton("Select Parking", self)
         select_button.clicked.connect(self.chooseSpot)
-        
+
         back_button = QPushButton("Back", self)
         back_button.clicked.connect(self.open_main_window)
-        
+
         delete_history_button = QPushButton("Delete History", self)
         delete_history_button.clicked.connect(self.deleteHistory)
         delete_history_button.setStyleSheet("color: red")
-
 
         # Create a layout for the main window
         main_layout = QVBoxLayout()
@@ -84,8 +83,11 @@ class ReservationHistoryWindow(QMainWindow):
         central_widget.setLayout(main_layout)
         self.setCentralWidget(central_widget)
 
-        
-        
+        # Disable the labels containing "Disabled Typical user" and "Electrical vehicle"
+        for label in central_widget.findChildren(QLabel):
+            if "Disabled Typical user" in label.text() or "Electrical vehicle" in label.text():
+                label.setEnabled(False)
+
     def chooseSpot(self):
         print("Choose Spot method called")
 
@@ -101,3 +103,9 @@ if __name__ == "__main__":
     window = ReservationHistoryWindow()
     window.show()
     sys.exit(app.exec_())
+
+
+
+
+
+

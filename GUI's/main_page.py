@@ -4,6 +4,7 @@ from parking_search import ParkingSearchWindow
 from user_support import SupportWindow
 from Reviews import ReviewsWindow
 from Gifts import Gifts
+from reservation_history import ReservationHistoryWindow
 import sys
 
 
@@ -43,6 +44,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(11)
         self.reservation_history_button.setFont(font)
+        self.reservation_history_button.setStyleSheet("background-color: lightcyan;")
         self.reservation_history_button.setObjectName("reservation_history_button")
         self.gridLayout.addWidget(self.reservation_history_button, 4, 2, 10, 20)
         self.reservation_history_button.setSizePolicy(sizePolicy)
@@ -112,6 +114,8 @@ class Ui_MainWindow(object):
         self.Reviews_button.clicked.connect(self.open_Reviews)
         self.gifts_button.clicked.connect(self.open_Gifts)
         self.user_support_button.clicked.connect(self.open_user_support)
+        self.reservation_history_button.clicked.connect(self.open_Reservation_History)
+
 
     def open_parking_search(self):
         self.parking_search = ParkingSearchWindow()
@@ -131,6 +135,12 @@ class Ui_MainWindow(object):
     def open_user_support(self):
         self.user_support = QtWidgets.QMainWindow()
         self.ui = SupportWindow()
+        self.ui.show()
+        self.centralwidget.window().close()
+
+    def open_Reservation_History(self):
+        self.Reservation_Hisotry = QtWidgets.QMainWindow()
+        self.ui = ReservationHistoryWindow()
         self.ui.show()
         self.centralwidget.window().close()
 
