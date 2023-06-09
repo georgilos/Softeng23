@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 
 class ConfirmPayWindow(QtWidgets.QMainWindow):
     def __init__(self):
@@ -12,6 +13,7 @@ class ConfirmPayWindow(QtWidgets.QMainWindow):
             "expired_date": "",
             "cvv": ""
         }
+
 
         # Create the main layout
         main_layout = QtWidgets.QVBoxLayout()
@@ -55,6 +57,9 @@ class ConfirmPayWindow(QtWidgets.QMainWindow):
         central_widget = QtWidgets.QWidget()
         central_widget.setLayout(main_layout)
         self.setCentralWidget(central_widget)
+
+    def proceedToConfirmPay(self):
+        self.show()
 
     def showPersonalInfo(self):
         # Function to display the personal information
@@ -133,7 +138,6 @@ class PersonalInfoDialog(QtWidgets.QDialog):
 
 if __name__ == "__main__":
     import sys
-
     app = QtWidgets.QApplication(sys.argv)
     parkare_to = ConfirmPayWindow()
     parkare_to.show()

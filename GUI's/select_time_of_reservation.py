@@ -1,7 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
+from Confirm_and_Pay import ConfirmPayWindow
 
 
 class Ui_Select_Available_Time(object):
+    proceedClicked = QtCore.pyqtSignal()
+
     def setupUi(self, Select_Available_Time):
         Select_Available_Time.setObjectName("Select_Available_Time")
         Select_Available_Time.resize(506, 600)
@@ -82,6 +86,7 @@ class Ui_Select_Available_Time(object):
         font.setPointSize(10)
         self.ProceedButton.setFont(font)
         self.ProceedButton.setObjectName("ProceedButton")
+        self.ProceedButton.clicked.connect(self.emitProceedClicked)
         self.gridLayout_4.addWidget(self.ProceedButton, 0, 2, 1, 1)
         Select_Available_Time.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(Select_Available_Time)
@@ -90,6 +95,9 @@ class Ui_Select_Available_Time(object):
 
         self.retranslateUi(Select_Available_Time)
         QtCore.QMetaObject.connectSlotsByName(Select_Available_Time)
+
+    def emitProceedClicked(self):
+        self.proceedClicked.emit()
 
     def retranslateUi(self, Select_Available_Time):
         _translate = QtCore.QCoreApplication.translate
@@ -100,14 +108,27 @@ class Ui_Select_Available_Time(object):
         self.Address_city_zipnumber.setText(_translate("Select_Available_Time", "Address/City/Zip Number"))
         self.From.setText(_translate("Select_Available_Time", "From"))
         self.To.setText(_translate("Select_Available_Time", "To"))
-        self.Back_Button.setText(_translate("Select_Available_Time", "Back"))
-        self.ProceedButton.setText(_translate("Select_Available_Time", "Proceed"))
+
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
-    Select_Available_Time = QtWidgets.QMainWindow()
+
+    # Create an instance of the Ui_Select_Available_Time class
     ui = Ui_Select_Available_Time()
+
+    # Create the Select_Available_Time window
+    Select_Available_Time = QtWidgets.QMainWindow()
+
+    # Set up the UI
     ui.setupUi(Select_Available_Time)
+
+    # Create an instance of the ConfirmPayWindow class
+    parkare_to = ConfirmPayWindow()
+
+    # Connect the signal to the slot
+    ui.proceedClicked.connect(parkare_to.proceedToConfirmPay)
+
     Select_Available_Time.show()
     sys.exit(app.exec_())
