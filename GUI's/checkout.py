@@ -5,7 +5,7 @@ class Ui_checkout(object):
     def setupUi(self, checkout):
         checkout.setObjectName("checkout")
         checkout.resize(560, 600)
-        checkout.setStyleSheet("background-image: url(:/newPrefix/back1.jpg);")
+        checkout.setStyleSheet("background-color: lightblue;")
         self.centralwidget = QtWidgets.QWidget(checkout)
         self.centralwidget.setObjectName("centralwidget")
         self.checkout_label = QtWidgets.QLabel(self.centralwidget)
@@ -62,7 +62,7 @@ class Ui_checkout(object):
         self.checkoutButton.setText(_translate("checkout", "Checkout"))
         self.problemButton.setText(_translate("checkout", "Problem"))
         
-        def checkOut(self):
+    def checkOut(self):
         # Function to handle the checkout process
         # Implement your logic here
         QtWidgets.QMessageBox.information(self, "Check-Out", "Check-out successful!")
