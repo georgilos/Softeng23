@@ -159,6 +159,27 @@ class Ui_Select_Vehicle(object):
         self.select_vehicle_label.setText(_translate("Select_Vehicle", "Select Vehicle"))
         self.helpbutton.setText(_translate("Select_Vehicle", "!"))
 
+# Functions
+
+    def viewSavedVehicles(self):
+        # Implement the functionality to view saved vehicles
+        print("Viewing saved vehicles")
+
+    def addNewDetails(self):
+        # Implement the functionality to add new details
+        print("Adding new details")
+
+    def updateVehicleDetails(self):
+        # Implement the functionality to update vehicle details
+        print("Updating vehicle details")
+
+    def updateSavedVehicles(self):
+        # Implement the functionality to update saved vehicles
+        print("Updating saved vehicles")
+
+    def showSavedVehicles(self):
+        print("Show my Vehicles")
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
