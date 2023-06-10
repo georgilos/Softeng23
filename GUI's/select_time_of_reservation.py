@@ -1,122 +1,119 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMessageBox
-from Confirm_and_Pay import ConfirmPayWindow
 
-class Ui_Select_Available_Time(object):
-    proceedClicked = QtCore.pyqtSignal()
-    def setupUi(self, Select_Available_Time):
-        Select_Available_Time.setObjectName("Select_Available_Time")
-        Select_Available_Time.resize(506, 600)
-        Select_Available_Time.setStyleSheet("background-color: lightcyan;")
-        self.centralwidget = QtWidgets.QWidget(Select_Available_Time)
-        self.centralwidget.setObjectName("centralwidget")
-        self.select_time_of_reservation_label = QtWidgets.QLabel(self.centralwidget)
-        self.select_time_of_reservation_label.setGeometry(QtCore.QRect(50, 50, 411, 41))
-        font = QtGui.QFont()
-        font.setPointSize(20)
-        self.select_time_of_reservation_label.setFont(font)
-        self.select_time_of_reservation_label.setObjectName("select_time_of_reservation_label")
-        self.Time_of_reservation_label = QtWidgets.QLabel(self.centralwidget)
-        self.Time_of_reservation_label.setGeometry(QtCore.QRect(160, 230, 171, 21))
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.Time_of_reservation_label.setFont(font)
-        self.Time_of_reservation_label.setObjectName("Time_of_reservation_label")
-        self.layoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.layoutWidget.setGeometry(QtCore.QRect(50, 160, 403, 24))
-        self.layoutWidget.setObjectName("layoutWidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.layoutWidget)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout.setObjectName("gridLayout")
-        self.Select_parking_spot_label = QtWidgets.QLabel(self.layoutWidget)
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.Select_parking_spot_label.setFont(font)
-        self.Select_parking_spot_label.setObjectName("Select_parking_spot_label")
-        self.gridLayout.addWidget(self.Select_parking_spot_label, 0, 0, 1, 1)
-        spacerItem = QtWidgets.QSpacerItem(18, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout.addItem(spacerItem, 0, 1, 1, 1)
-        self.Address_city_zipnumber = QtWidgets.QLabel(self.layoutWidget)
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.Address_city_zipnumber.setFont(font)
-        self.Address_city_zipnumber.setObjectName("Address_city_zipnumber")
-        self.gridLayout.addWidget(self.Address_city_zipnumber, 0, 2, 1, 1)
-        self.layoutWidget1 = QtWidgets.QWidget(self.centralwidget)
-        self.layoutWidget1.setGeometry(QtCore.QRect(110, 290, 279, 26))
-        self.layoutWidget1.setObjectName("layoutWidget1")
-        self.gridLayout_3 = QtWidgets.QGridLayout(self.layoutWidget1)
-        self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout_3.setObjectName("gridLayout_3")
-        self.gridLayout_2 = QtWidgets.QGridLayout()
-        self.gridLayout_2.setObjectName("gridLayout_2")
-        self.From = QtWidgets.QLabel(self.layoutWidget1)
-        self.From.setObjectName("From")
-        self.gridLayout_2.addWidget(self.From, 0, 0, 1, 1)
-        self.time_From = QtWidgets.QTimeEdit(self.layoutWidget1)
-        self.time_From.setObjectName("time_From")
-        self.gridLayout_2.addWidget(self.time_From, 0, 1, 1, 1)
-        self.gridLayout_3.addLayout(self.gridLayout_2, 0, 0, 1, 1)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_3.addItem(spacerItem1, 0, 1, 1, 1)
-        self.To = QtWidgets.QLabel(self.layoutWidget1)
-        self.To.setObjectName("To")
-        self.gridLayout_3.addWidget(self.To, 0, 2, 1, 1)
-        self.time_To = QtWidgets.QTimeEdit(self.layoutWidget1)
-        self.time_To.setObjectName("time_To")
-        self.gridLayout_3.addWidget(self.time_To, 0, 3, 1, 1)
-        self.layoutWidget2 = QtWidgets.QWidget(self.centralwidget)
-        self.layoutWidget2.setGeometry(QtCore.QRect(90, 480, 310, 32))
-        self.layoutWidget2.setObjectName("layoutWidget2")
-        self.gridLayout_4 = QtWidgets.QGridLayout(self.layoutWidget2)
-        self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout_4.setObjectName("gridLayout_4")
-        self.Back_Button = QtWidgets.QPushButton(self.layoutWidget2)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.Back_Button.setFont(font)
-        self.Back_Button.setObjectName("Back_Button")
-        self.gridLayout_4.addWidget(self.Back_Button, 0, 0, 1, 1)
-        spacerItem2 = QtWidgets.QSpacerItem(108, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_4.addItem(spacerItem2, 0, 1, 1, 1)
-        self.ProceedButton = QtWidgets.QPushButton(self.layoutWidget2)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.ProceedButton.setFont(font)
-        self.ProceedButton.setObjectName("ProceedButton")
-        self.gridLayout_4.addWidget(self.ProceedButton, 0, 2, 1, 1)
-        Select_Available_Time.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(Select_Available_Time)
-        self.statusbar.setObjectName("statusbar")
-        Select_Available_Time.setStatusBar(self.statusbar)
 
-        self.retranslateUi(Select_Available_Time)
-        QtCore.QMetaObject.connectSlotsByName(Select_Available_Time)
+class ReservationTime(QtWidgets.QWidget):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("Reservation Time")
+        self.duration = None
+
+        self.label_select_time = QtWidgets.QLabel("Select Reservation Time:")
+
+        self.radio_group = QtWidgets.QButtonGroup()
+
+
+        self.label_select_time = QtWidgets.QLabel("Select Reservation Time:")
+        self.combo_box_time = QtWidgets.QComboBox()
+        self.combo_box_time.addItem("1 hour")
+        self.combo_box_time.addItem("2 hours")
+        self.combo_box_time.addItem("3 hours")
+
+        self.radio_10am = QtWidgets.QRadioButton("10:00 AM")
+        self.radio_11am = QtWidgets.QRadioButton("11:00 AM")
+        self.radio_12pm = QtWidgets.QRadioButton("12:00 PM")
+        self.radio_1pm = QtWidgets.QRadioButton("1:00 PM")
+
+        self.radio_group.addButton(self.radio_10am)
+        self.radio_group.addButton(self.radio_11am)
+        self.radio_group.addButton(self.radio_12pm)
+        self.radio_group.addButton(self.radio_1pm)
+
+        self.button_choose_time = QtWidgets.QPushButton("Choose Time")
+        self.button_choose_time.clicked.connect(self.chooseDurationTime)
+
+        self.button_show_available_time = QtWidgets.QPushButton("Show Available Time")
+        self.button_show_available_time.clicked.connect(self.showAvailableReservationTime)
+
+        self.button_confirm = QtWidgets.QPushButton("Confirm")
+        self.button_confirm.clicked.connect(self.confirmTimeDetails)
+
+        self.button_update = QtWidgets.QPushButton("Update")
+        self.button_update.clicked.connect(self.systemUpdate)
+
+        layout = QtWidgets.QVBoxLayout()
+        layout.addWidget(self.label_select_time)
+        layout.addWidget(self.combo_box_time)
+        layout.addWidget(self.label_select_time)
+        layout.addWidget(self.radio_10am)
+        layout.addWidget(self.radio_11am)
+        layout.addWidget(self.radio_12pm)
+        layout.addWidget(self.radio_1pm)
+        layout.addWidget(self.button_choose_time)
+        layout.addWidget(self.button_show_available_time)
+        layout.addWidget(self.button_confirm)
+        layout.addWidget(self.button_update)
+        self.setLayout(layout)
+
+    def chooseDurationTime(self):
+        # Function to handle the selection of reservation time
+        selected_button = self.radio_group.checkedButton()
+        if selected_button:
+            self.duration = selected_button.text()
+            QtWidgets.QMessageBox.information(self, "Reservation Time", f"Selected reservation time: {self.duration}")
+        else:
+            QtWidgets.QMessageBox.warning(self, "No Time Selected", "Please select a reservation time.")
+
+    def showAvailableReservationTime(self):
+        # Function to show the available reservation times
+        # Implement your logic here to retrieve and display the available times
+        available_times = ["10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM"]
+        time_info = "Available Reservation Times:\n"
+        for time in available_times:
+            time_info += f"- {time}\n"
+        QtWidgets.QMessageBox.information(self, "Available Reservation Times", time_info)
+
+    def correctDuration(self):
+        # Function to handle the case when the selected duration is valid
+        QtWidgets.QMessageBox.information(self, "Valid Duration", "The selected duration is valid.")
     
-    def emitProceedLicked(self):
-        self.proceedClicked.emit()
+    def wrongDurationTime(self):
+        # Function to handle the case when the selected duration is invalid
+        QtWidgets.QMessageBox.warning(self, "Invalid Duration", "The selected duration is invalid. Please choose a different duration.")
 
-    def retranslateUi(self, Select_Available_Time):
-        _translate = QtCore.QCoreApplication.translate
-        Select_Available_Time.setWindowTitle(_translate("Select_Available_Time", "MainWindow"))
-        self.select_time_of_reservation_label.setText(_translate("Select_Available_Time", "Select  Time Of Reservation"))
-        self.Time_of_reservation_label.setText(_translate("Select_Available_Time", "Time Of Reservation"))
-        self.Select_parking_spot_label.setText(_translate("Select_Available_Time", "Selected Parking Spot"))
-        self.Address_city_zipnumber.setText(_translate("Select_Available_Time", "Address/City/Zip Number"))
-        self.From.setText(_translate("Select_Available_Time", "From"))
-        self.To.setText(_translate("Select_Available_Time", "To"))
-        self.Back_Button.setText(_translate("Select_Available_Time", "Back"))
-        self.ProceedButton.setText(_translate("Select_Available_Time", "Proceed"))
+    def systemUpdate(self):
+        # Function to update 
+         QtWidgets.QMessageBox.warning(self, "Updated System")
+
+    
+    def editDurationTime(self):
+        # Function to edit
+    
+        QtWidgets.QMessageBox.warning(self, "Your Duration Time is modified!")
+
+    def showTimeDetails(self):
+        # Function to show time details
+    
+        QtWidgets.QMessageBox.warning(self, "Show Time details")
+
+    
+    def confirmTimeDetails(self):
+        # Function to confirm time details
+    
+       QtWidgets.QMessageBox.warning(self, "Your Time Details are confirmed")
+
+
+    
+
+        
+
+
+
 
 if __name__ == "__main__":
     import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Select_Available_Time = QtWidgets.QMainWindow()
-    ui = Ui_Select_Available_Time()
-    ui.setupUi(Select_Available_Time)
-    Select_Available_Time.show()
-def handleProceedClicked():
-    QMessageBox.information(Select_Available_Time, "Proceed Clicked", "Proceed button was clicked!")
 
-    ui.proceedClicked.connect(handleProceedClicked)
-sys.exit(app.exec_())
+    app = QtWidgets.QApplication(sys.argv)
+    reservation_time = ReservationTime()
+    reservation_time.show()
+    sys.exit(app.exec_())
