@@ -7,7 +7,7 @@ class Ui_Select_Available_Time(object):
     def setupUi(self, Select_Available_Time):
         Select_Available_Time.setObjectName("Select_Available_Time")
         Select_Available_Time.resize(506, 600)
-        Select_Available_Time.setStyleSheet("background-image: url(:/newPrefix/back1.jpg);")
+        Select_Available_Time.setStyleSheet("background-color: lightcyan;")
         self.centralwidget = QtWidgets.QWidget(Select_Available_Time)
         self.centralwidget.setObjectName("centralwidget")
         self.select_time_of_reservation_label = QtWidgets.QLabel(self.centralwidget)
