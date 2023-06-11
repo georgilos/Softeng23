@@ -95,7 +95,7 @@ class ReservationHistoryWindow(QMainWindow):
         print("Delete History method called")
 
     def open_main_window(self):
-        # Replace with your logic to open the main window
+        
         print("Open Main Window method called")
 
 if __name__ == "__main__":

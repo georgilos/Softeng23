@@ -63,24 +63,20 @@ class Ui_checkout(object):
         self.problemButton.setText(_translate("checkout", "Problem"))
         
     def checkOut(self):
-        # Function to handle the checkout process
-        # Implement your logic here
+        
         QtWidgets.QMessageBox.information(self, "Check-Out", "Check-out successful!")
 
     def isValidCheckout(self):
-        # Function to check if the checkout is valid
-        # Implement your logic here
+        
         QtWidgets.QMessageBox.information(self, "Validity Check", "The checkout is valid!")
 
     def notValidCheckout(self):
-        # Function to check if the checkout is valid
-        # Implement your logic here
+       
         QtWidgets.QMessageBox.information(self, "Validity Check", "The checkout is not valid!")
 
     
     def useEticket(self):
-        # Function to use an e-ticket
-        # Implement your logic here
+       
         QtWidgets.QMessageBox.information(self, "E-Ticket Used", "E-Ticket has been used!")
 
     

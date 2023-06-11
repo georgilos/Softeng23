@@ -114,7 +114,7 @@ class Login_Window(object):
 
    
                                                  
-# to run as python script
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)

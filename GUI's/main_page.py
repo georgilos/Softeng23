@@ -51,6 +51,7 @@ class Ui_MainWindow(object):
 
         self.change_user_button = QtWidgets.QPushButton(self.layoutWidget)
         font = QtGui.QFont()
+        self.change_user_button.setStyleSheet("background-color: lightcyan;")
         font.setPointSize(11)
         self.change_user_button.setFont(font)
         self.change_user_button.setObjectName("change_user_button")
